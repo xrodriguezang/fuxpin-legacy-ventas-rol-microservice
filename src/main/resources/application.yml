@@ -12,3 +12,14 @@ server:
     keyPassword: 123456
     keyStore: file:C:\Users\amgri\desenvolupament\ss-tfg-unir\xrodrigdnskeystore
     keyStorePassword: 123456
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: https://xrodrig.dnsnet.info:8446/fuxpin-eureka-server/
+
+#eureka:
+#  client:
+#    service-url: ${EUREKA_URI:https://xrodrig.dnsnet.info:8446/fuxpin-eureka-server}
