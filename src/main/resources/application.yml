@@ -2,6 +2,7 @@ spring:
   application:
     name: fuxpin-role-microservice
 
+
 server:
   port: 8447
   servlet:
@@ -13,12 +14,20 @@ server:
     keyStore: file:C:\Users\amgri\desenvolupament\ss-tfg-unir\xrodrigdnskeystore
     keyStorePassword: 123456
 
-eureka:
+eureka:         #tells about the Eureka server details and its refresh time
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 20
   client:
     register-with-eureka: true
     fetch-registry: true
-    service-url:
-      defaultZone: https://xrodrig.dnsnet.info:8446/fuxpin-eureka-server/
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+
 
 #eureka:
 #  client:
