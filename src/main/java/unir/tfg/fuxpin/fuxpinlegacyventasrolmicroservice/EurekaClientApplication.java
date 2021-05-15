@@ -1,23 +1,20 @@
 package unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.RoleLegacy;
 
-import java.util.List;
-
 @SpringBootApplication
-public class FuxpinLegacyVentasRolMicroserviceApplication {
+public class EurekaClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FuxpinLegacyVentasRolMicroserviceApplication.class, args);
+		SpringApplication.run(EurekaClientApplication.class, args);
 	}
 
 	@GetMapping("/hello")
@@ -28,26 +25,37 @@ public class FuxpinLegacyVentasRolMicroserviceApplication {
 }
 
 @RestController
-class ServiceInstanceRestController {
+class ServiceInstanceRestController implements RolesController {
 
-	@Autowired
-	private DiscoveryClient discoveryClient;
+	@Value("${spring.application.name}")
+	private String appName;
 
-	@RequestMapping("/service-instances/{applicationName}")
-	public List<ServiceInstance> serviceInstancesByApplicationName(
-			@PathVariable String applicationName) {
-		return this.discoveryClient.getInstances(applicationName);
-	}
-
-	@GetMapping("/getroles/{id}")
-	public ResponseEntity<RoleLegacy> read(@PathVariable("id") Long id) {
+	@Override
+	public ResponseEntity<RoleLegacy> getRoles(Long id) {
 		// https://www.baeldung.com/spring-boot-json
 
-		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN");
+		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN_" + appName);
 
 		rolesLegacy.setRoleId("222");
 
 		return ResponseEntity.ok(rolesLegacy);
 	}
+
+	@Override
+	public String getRole() {
+		// https://www.baeldung.com/spring-boot-json
+
+		return "pepitu";
+	}
+
+	@Override
+	public ResponseEntity<?> getRoli(String id) {
+		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN_" + appName);
+
+		rolesLegacy.setRoleId("222");
+
+		return ResponseEntity.ok(rolesLegacy);
+	}
+
 
 }
