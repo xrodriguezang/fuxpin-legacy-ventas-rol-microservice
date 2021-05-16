@@ -1,39 +1,3 @@
-#spring:
-#  application:
-#    name: fuxpin-role-microservice
-#
-#
-#server:
-#  port: 8447
-#  #servlet:
-#    #context-path: /fuxpin-role-microservice
-#  name: https://xrodrig.dnsnet.info:${server.port}
-#  ssl:
-#    enabled: true
-#    keyPassword: 123456
-#    keyStore: file:C:\Users\amgri\desenvolupament\ss-tfg-unir\xrodrigdnskeystore
-#    keyStorePassword: 123456
-#
-#eureka:         #tells about the Eureka server details and its refresh time
-#  instance:
-#    leaseRenewalIntervalInSeconds: 10
-#    leaseExpirationDurationInSeconds: 20
-#    preferIpAddress: true
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
-#    serviceUrl:
-#      defaultZone: ${EUREKA_URI:https://xrodrig.dnsnet.info:8446/eureka/}
-#    healthcheck:
-#      enabled: true
-#    lease:
-#      duration: 5
-
-#eureka:
-#  client:
-#    service-url: ${EUREKA_URI:https://xrodrig.dnsnet.info:8446/fuxpin-eureka-server}
-
-
 spring:
   application:
     name: fuxpin-role-microservice
@@ -45,5 +9,16 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
   instance:
     preferIpAddress: true
+    leaseRenewalIntervalInSeconds: 30
+    leaseExpirationDurationInSeconds: 60
+  healthcheck:
+    enabled: true
+    lease:
+      duration: 5
+
