@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.Alive;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.RoleLegacy;
 
 @SpringBootApplication
@@ -17,45 +18,25 @@ public class EurekaClientApplication {
 		SpringApplication.run(EurekaClientApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
-
 }
 
 @RestController
 class ServiceInstanceRestController implements RolesController {
 
-	@Value("${spring.application.name}")
-	private String appName;
-
 	@Override
-	public ResponseEntity<RoleLegacy> getRoles(Long id) {
-		// https://www.baeldung.com/spring-boot-json
+	public ResponseEntity<?> getRoles(String id) {
 
-		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN_" + appName);
-
-		rolesLegacy.setRoleId("222");
+		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN");
 
 		return ResponseEntity.ok(rolesLegacy);
 	}
 
-	@Override
-	public String getRole() {
-		// https://www.baeldung.com/spring-boot-json
-
-		return "pepitu";
-	}
 
 	@Override
-	public ResponseEntity<?> getRoli(String id) {
-		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMIN_" + appName);
+	public ResponseEntity<?> imAlive() {
+		Alive alive = new Alive("Ok", "Ok");
 
-		rolesLegacy.setRoleId("222");
-
-		return ResponseEntity.ok(rolesLegacy);
+		return ResponseEntity.ok(alive);
 	}
-
 
 }
