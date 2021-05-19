@@ -9,8 +9,6 @@ It's integrated with Eureka Server
 
 # More info:
 
-query: *http://localhost:8081/getRoles/1*
-
 https://www.baeldung.com/spring-boot-json
 
 https://spring.io/blog/2015/07/14/microservices-with-spring
