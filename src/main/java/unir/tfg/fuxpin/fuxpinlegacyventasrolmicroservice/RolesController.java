@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * Microservice Interface
  *
+ * It's a contract interface with de clients. Every client must implement it.
+ *
  * @author Xavier Rodríguez
  *
  * Model Richardson compliance

@@ -11,7 +11,7 @@ spring:
       ## To avoid conflicts, the automatic schema creation is turned off / update -> To create database if is not created
       # -> ddl-auto: update
       ddl-auto: none
-    show-sql: true
+    # show-sql: true -> Show SQL
   datasource:
     ## Database is not embedded. Spring Boot 2 - external database
     initialization-mode: always
