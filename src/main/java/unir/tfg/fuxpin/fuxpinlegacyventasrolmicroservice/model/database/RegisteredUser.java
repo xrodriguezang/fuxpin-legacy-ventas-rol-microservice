@@ -35,7 +35,7 @@ public class RegisteredUser {
     @ManyToMany(
             cascade = CascadeType.ALL
     )
-    private List<Roles> roles = new ArrayList<>();
+    private List<LegacyRole> roles = new ArrayList<>();
 
     /**
      * It's override to print all data from user

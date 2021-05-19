@@ -7,11 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.LegacyRole;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.RegisteredUser;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.rest.Alive;
-import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.rest.RoleLegacy;
+import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.rest.Role;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.services.IUserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -34,17 +36,20 @@ class ServiceInstanceRestController implements RolesController {
 	@Override
 	public ResponseEntity<?> getRoles(String id) {
 
-		logger.info("Get roles by user: {}", id);
+		List<Role> roles = new ArrayList<>();
 
-		//List<RegisteredUser> registeredUserList = userService.findAll();
+		logger.info("Get roles by user: {}", id);
 
 		RegisteredUser user = userService.getUserByUsername(id);
 
-		logger.info("user Returner: {}", user.toString());
+		logger.info("Legacy user: Returner: {}", user.toString());
 
-		RoleLegacy rolesLegacy = new RoleLegacy("1", "ROLE_ADMINNNN");
+		for (LegacyRole legacyRole: user.getRoles()) {
+			// Transform the legacy role to the new object role
+			roles.add(new Role(user.getRoles().get(0).getCode(), user.getRoles().get(0).getDescription()));
+		}
 
-		return ResponseEntity.ok(rolesLegacy);
+		return ResponseEntity.ok(roles);
 	}
 
 

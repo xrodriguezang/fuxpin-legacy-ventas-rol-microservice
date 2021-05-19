@@ -13,7 +13,7 @@ import lombok.Setter;
  */
 
 @Getter @Setter @AllArgsConstructor
-public class RoleLegacy {
+public class Role {
 
     String roleId;
     String roleDescription;

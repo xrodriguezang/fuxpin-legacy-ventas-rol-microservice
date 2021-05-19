@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 /**
  *
- * Role Object for Database
+ * Legacy Role Object for Database
  *
  * @author <a href="mailto:amgrill@gmail.com">Xavier Rodríguez</a>
  *
@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Entity
 @Table (name = "ROLES")
 @Getter @Setter
-public class Roles {
+public class LegacyRole {
 
     @Id
     @GeneratedValue (strategy =  GenerationType.AUTO)
