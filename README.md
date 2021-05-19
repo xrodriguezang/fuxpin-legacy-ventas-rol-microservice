@@ -13,3 +13,7 @@ https://spring.io/guides/gs/service-registration-and-discovery/
 https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/
 
 https://stackoverflow.com/questions/50971891/how-to-secure-spring-cloud-eureka-service-with-basic-auth/51024117#51024117
+
+# Define Enviorment:
+
+VM Options -> -Dspring.profiles.active=production

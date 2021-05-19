@@ -1,10 +1,29 @@
+############ Application name ##############
+
 spring:
   application:
     name: fuxpin-role-microservice
 
+####### POSTGRESQL Configuration #########
+  jpa:
+    hibernate:
+      ## To avoid conflicts, the automatic schema creation is turned off
+      ddl-auto: none
+    show-sql: true
+  datasource:
+    ## Database is not embedded. Spring Boot 2 - external database
+    initialization-mode: always
+    platform: postgres
+    url: jdbc:postgresql://pi.intranet.cat:5432/aplicaciondeventas-legacy
+    username: aplicacionventas
+    password: projectAplicacionVentas
+
+############ Application port ##############
 server:
+  # Spring Boot choose a random port for us because later we are accessing this service with its name.
   port: 0
 
+############ EUREKA SERVER configuration ##############
 eureka:
   client:
     serviceUrl:
