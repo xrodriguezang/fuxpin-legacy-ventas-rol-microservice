@@ -16,6 +16,11 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.services.IUserService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Spring boot application
+ *
+ * @author Xavier Rodríguez
+ */
 @SpringBootApplication
 public class EurekaClientApplication {
 
@@ -24,6 +29,10 @@ public class EurekaClientApplication {
 	}
 
 }
+
+/**
+ * Rest Controller that serves the role information
+ */
 
 @RestController
 class ServiceInstanceRestController implements RolesController {
@@ -51,7 +60,6 @@ class ServiceInstanceRestController implements RolesController {
 
 		return ResponseEntity.ok(roles);
 	}
-
 
 	@Override
 	public ResponseEntity<?> imAlive() {

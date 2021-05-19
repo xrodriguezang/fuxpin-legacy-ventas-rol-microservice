@@ -5,6 +5,13 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.Register
 
 import java.util.List;
 
+/**
+ *
+ * To monitor de Eureka-service
+ *
+ * @author Xavier Rodríguez
+ *
+ */
 public interface IUserService {
 
     List<RegisteredUser> findAll();

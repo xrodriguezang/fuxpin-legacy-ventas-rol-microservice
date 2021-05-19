@@ -12,7 +12,7 @@ import java.util.Optional;
  *
  * User Service
  *
- * @author <a href="mailto:amgrill@gmail.com">Xavier Rodríguez</a>
+ * @author Xavier Rodríguez
  *
  */
 

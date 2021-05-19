@@ -11,7 +11,7 @@ import java.util.List;
  *
  * User Object for Database
  *
- * @author <a href="mailto:amgrill@gmail.com">Xavier Rodríguez</a>
+ * @author Xavier Rodríguez
  *
  */
 

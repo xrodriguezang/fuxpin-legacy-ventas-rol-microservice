@@ -10,7 +10,7 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.Register
  *
  * Filter the CRUD methods.
  *
- * @author <a href="mailto:amgrill@gmail.com">Xavier Rodríguez</a>
+ * @author Xavier Rodríguez
  *
  */
 public interface UserRepository extends CrudRepository<RegisteredUser, Long> {

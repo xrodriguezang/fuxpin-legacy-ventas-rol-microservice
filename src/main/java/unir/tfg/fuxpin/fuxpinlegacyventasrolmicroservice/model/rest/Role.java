@@ -8,7 +8,9 @@ import lombok.Setter;
  *
  * Role Object for Rest
  *
- * @author <a href="mailto:amgrill@gmail.com">Xavier Rodríguez</a>
+ * It's the new object Role defined for the new application
+ *
+ * @author Xavier Rodríguez
  *
  */
 
