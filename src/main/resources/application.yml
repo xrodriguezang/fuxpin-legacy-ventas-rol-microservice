@@ -4,10 +4,12 @@ spring:
   application:
     name: fuxpin-role-microservice
 
+
 ####### POSTGRESQL Configuration #########
   jpa:
     hibernate:
-      ## To avoid conflicts, the automatic schema creation is turned off
+      ## To avoid conflicts, the automatic schema creation is turned off / update -> To create database if is not created
+      # -> ddl-auto: update
       ddl-auto: none
     show-sql: true
   datasource:

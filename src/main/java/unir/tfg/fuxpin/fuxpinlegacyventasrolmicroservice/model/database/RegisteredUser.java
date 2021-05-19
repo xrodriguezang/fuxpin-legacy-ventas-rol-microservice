@@ -32,7 +32,9 @@ public class RegisteredUser {
 
     private String surname2;
 
-    @OneToMany
+    @ManyToMany(
+            cascade = CascadeType.ALL
+    )
     private List<Roles> roles = new ArrayList<>();
 
     /**
