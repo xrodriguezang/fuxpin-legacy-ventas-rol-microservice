@@ -2,6 +2,10 @@
 -- This code createas a new table database every time that bootrun is started.
 
 --ALTER TABLE PUBLIC.ROLES DROP CONSTRAINT fk_user;
+
+
+/*
+
 DROP TABLE IF EXISTS ROLES;
 DROP TABLE IF EXISTS REGISTERED_USER;
 
@@ -17,6 +21,7 @@ CREATE TABLE ROLES (
                         ID serial PRIMARY KEY,
                         CODE VARCHAR(50),
                         DESCRIPTION VARCHAR(255),
-                        ID_USER serial,
-                        constraint fk_user foreign key (ID_USER) references REGISTERED_USER(ID)
+                        ID_USER serial
                    );
+
+*/
