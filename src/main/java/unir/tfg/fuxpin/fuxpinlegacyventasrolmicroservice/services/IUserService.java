@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  *
- * To monitor de Eureka-service
+ * User interface
  *
  * @author Xavier Rodríguez
  *
