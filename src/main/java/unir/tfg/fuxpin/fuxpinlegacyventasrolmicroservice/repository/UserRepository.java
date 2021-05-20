@@ -6,9 +6,7 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.Register
 
 /**
  *
- * This interface provides the contract methods.
- *
- * Filter the CRUD methods.
+ * This interface provides the contract methods wih the database
  *
  * @author Xavier Rodríguez
  *

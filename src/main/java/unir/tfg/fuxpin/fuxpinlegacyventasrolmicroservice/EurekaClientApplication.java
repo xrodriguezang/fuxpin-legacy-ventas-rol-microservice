@@ -11,6 +11,7 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.LegacyRo
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.RegisteredUser;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.rest.Alive;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.rest.Role;
+import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.services.ITestService;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.services.IUserService;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class EurekaClientApplication {
 }
 
 /**
- * Rest Controller that serves the role information
+ * Rest Controller provides the roles and infomation of the service registered
  */
 
 @RestController
@@ -42,6 +43,16 @@ class ServiceInstanceRestController implements RolesController {
 	@Autowired
 	IUserService userService;
 
+	@Autowired
+	ITestService testService;
+
+	/**
+	 * Gets and rewrites the legacy role and parse it in the new object.
+	 *
+	 * @param id username
+	 *
+	 * @return the legacy role
+	 */
 	@Override
 	public ResponseEntity<?> getRoles(String id) {
 
@@ -55,15 +66,21 @@ class ServiceInstanceRestController implements RolesController {
 
 		for (LegacyRole legacyRole: user.getRoles()) {
 			// Transform the legacy role to the new object role
-			roles.add(new Role(user.getRoles().get(0).getCode(), user.getRoles().get(0).getDescription()));
+			roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
 		}
 
 		return ResponseEntity.ok(roles);
 	}
 
+	/**
+	 * Return is the components of the service are alive
+	 *
+	 * @return
+	 */
 	@Override
 	public ResponseEntity<?> imAlive() {
-		Alive alive = new Alive("Ok", "Ok");
+
+		Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
 
 		return ResponseEntity.ok(alive);
 	}
