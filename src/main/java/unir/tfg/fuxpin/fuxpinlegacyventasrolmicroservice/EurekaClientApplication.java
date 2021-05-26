@@ -1,5 +1,6 @@
 package unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice;
 
+import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,9 +37,8 @@ public class EurekaClientApplication {
  */
 
 @RestController
+@Log4j2
 class ServiceInstanceRestController implements RolesController {
-
-	Logger logger = LoggerFactory.getLogger(ServiceInstanceRestController.class);
 
 	@Autowired
 	IUserService userService;
@@ -58,11 +58,11 @@ class ServiceInstanceRestController implements RolesController {
 
 		List<Role> roles = new ArrayList<>();
 
-		logger.info("Get roles by user: {}", id);
+		log.info("Get roles by user: {}", id);
 
 		RegisteredUser user = userService.getUserByUsername(id);
 
-		logger.info("Legacy user: Returner: {}", user.toString());
+		log.info("Legacy user: Returner: {}", user.toString());
 
 		for (LegacyRole legacyRole: user.getRoles()) {
 			// Transform the legacy role to the new object role
