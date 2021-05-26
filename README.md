@@ -13,6 +13,20 @@ Client-side service discovery allows services to find and communicate with each 
 
 VM Options -> -Dspring.profiles.active=production
 
+## Enviorment variables
+You have to define in environment variables(java), for example, to populate the github credentials. In Spring Boot task -> ***VM options*** define:
+
+````
+-Dpostgresql.user=userDatabase 
+-Dpostgresql.password=passwordDatabase
+````
+
+## Run in localhost
+
+In ***VM options***, add:
+
+``-Dpostgresql.user=userDatabase -Dpostgresql.password=passwordDatabase``
+
 # More info:
 
 * https://www.baeldung.com/spring-boot-json

@@ -17,8 +17,8 @@ spring:
     initialization-mode: always
     platform: postgres
     url: jdbc:postgresql://pi.intranet.cat:5432/aplicaciondeventas-legacy
-    username: aplicacionventas
-    password: xxxxxxxxxxxxxx
+    username: ${postgresql.user}
+    password: ${postgresql.password}
 
 ############ Application port ##############
 server:
@@ -29,7 +29,8 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:https://xrodrig.dnsnet.info:8446/eureka/}
+      # defaultZone: ${EUREKA_URI:https://xrodrig.dnsnet.info:8446/eureka/}
+      defaultZone: ${EUREKA_URI:https://pi.intranet.cat:8448/eureka/}
     healthcheck:
       enabled: true
     lease:
@@ -38,4 +39,17 @@ eureka:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 10
     leaseExpirationDurationInSeconds: 20
+
+logging:
+  pattern:
+    file: "%d %-5level [%thread] %logger : %msg%n"
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+  file:
+    name: C:\Users\amgri\logs\fuxpin-config-server\fuxpin-legacy-role-microservice.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
 
