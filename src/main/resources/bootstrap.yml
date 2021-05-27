@@ -1,7 +1,4 @@
 spring:
-  profiles:
-    # Profile actived. example: ventas-localhost.yml. I'ts default value
-    active: localhost
   cloud:
     config:
       # user + password Config Cloud Config Server
