@@ -9,12 +9,12 @@ Main interface communication: ``RolesController``.
 Client-side service discovery allows services to find and communicate with each other without hard-coding hostname and port.
 
 # This project Uses
-<img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" width="200">
+<img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" width="200"></br>
 
-| <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Cloud Config Server</span></br>      |    <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Cloud Config Server</span></br>  |
-| ----------- | ----------- |
-| <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Data</span></br>   | <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Security</span></br>        |
-
+<span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Cloud Config Server</span></br>
+<span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Eureka Netflix Server</span></br>
+<span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Data</span></br>
+<span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Security</span></br>
 
 
 ## Current version
