@@ -2,12 +2,22 @@
 
 Microservice integrated with ``Spring Cloud Netflix Eureka``. It microservice provides the role of legacy application. It implements the Black box Modernization with a microservice layer. The comunication between the systems is via REST.
 
+The configuration is provided by ``Spring Cloud Config Server``
+
 Main interface communication: ``RolesController``.
 
 Client-side service discovery allows services to find and communicate with each other without hard-coding hostname and port.
 
+# This project Uses
+<img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" width="200"></br>
+
+ &#8594; Spring Cloud Config Server</br>
+ &#8594; Spring Eureka Netflix Server</br>
+ &#8594; Spring Data
+
 ## Current version
 ![](https://img.shields.io/badge/fuxpin%20legacy%20ventas%20rol%20microservice-0.0.1-blue)
+
 
 # Define Enviorment
 
@@ -50,8 +60,9 @@ ${PROJECT_DIRECTORY}/build/libs/
 
 ## Production launcher
 
+Windows: Windows + R -> CMD
 ````
-java -Xms128m -Xmx256m -jar C:\Users\amgri\.jdks\jdk-11.0.7\bin\java -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=passwrod -Dpostgresql.user=user -Dpostgresql.password=password .\fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
+C:\Users\amgri\.jdks\jdk-11.0.7\bin\java -Xms128m -Xmx256m -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=password -Dpostgresql.user=user -Dpostgresql.password=password -Deureka.user=user -Deureka.password=password .\fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
 ````
 
 ## Create a Run Java Jar Application with Systemd
