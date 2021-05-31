@@ -2,12 +2,24 @@
 
 Microservice integrated with ``Spring Cloud Netflix Eureka``. It microservice provides the role of legacy application. It implements the Black box Modernization with a microservice layer. The comunication between the systems is via REST.
 
+The configuration is provided by ``Spring Cloud Config Server``
+
 Main interface communication: ``RolesController``.
 
 Client-side service discovery allows services to find and communicate with each other without hard-coding hostname and port.
 
+# This project Uses
+<img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" width="200">
+
+| <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Cloud Config Server</span></br>      |    <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Cloud Config Server</span></br>  |
+| ----------- | ----------- |
+| <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Data</span></br>   | <span style="color: #8BC63E; font-family: 'Lucida Fax',''; font-size: 32px; font-weight: 800; margin: 0 0 24px; text-align: center;"> &#8594; Spring Security</span></br>        |
+
+
+
 ## Current version
 ![](https://img.shields.io/badge/fuxpin%20legacy%20ventas%20rol%20microservice-0.0.1-blue)
+
 
 # Define Enviorment
 
