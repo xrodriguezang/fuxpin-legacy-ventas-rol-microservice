@@ -1,7 +1,9 @@
-  spring:
+spring:
   cloud:
     config:
       # user + password Config Cloud Config Server
       username: ${rest.user}
       password: ${rest.password}
+
+      # file configuration in Spring Cloud Config Server
       name: fuxpin-role-legacy-microservice

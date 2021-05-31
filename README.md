@@ -51,7 +51,7 @@ ${PROJECT_DIRECTORY}/build/libs/
 ## Production launcher
 
 ````
-java -Xms128m -Xmx256m -jar C:\Users\amgri\.jdks\jdk-11.0.7\bin\java -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=passwrod -Dpostgresql.user=user -Dpostgresql.password=password .\fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
+java -Xms128m -Xmx256m -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=password -Dpostgresql.user=user -Dpostgresql.password=password -Deureka.user=user -Deureka.password=password .\fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
 ````
 
 ## Create a Run Java Jar Application with Systemd
