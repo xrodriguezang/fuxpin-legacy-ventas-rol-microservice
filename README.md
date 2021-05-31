@@ -1,37 +1,43 @@
 # fuxpin-legacy-ventas-rol-microservice
 
-Microservice integrated with ``Spring Cloud Netflix Eureka``. It microservice provides the role of legacy application. It implements the Black box Modernization with a microservice layer. The comunication between the systems is via REST.
+Microservice integrated with ``Spring Cloud Netflix Eureka``. 
 
-The configuration is provided by ``Spring Cloud Config Server``
+Configuration is provided by ``Spring Cloud Config Server``
 
 Main interface communication: ``RolesController``.
 
-Client-side service discovery allows services to find and communicate with each other without hard-coding hostname and port.
+It microservice provides the role of legacy application. It implements the Black box Modernization with a microservices layer. The communication with the services layer is via REST.
+
+Client-side *Service Discovery* allows services to find and communicate with each other without hard-coding hostname and port.
 
 # This project Uses
 <img src="https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg" width="200"></br>
 
- &#8594; Spring Cloud Config Server</br>
- &#8594; Spring Eureka Netflix Server</br>
- &#8594; Spring Data
+&#8594; Spring Boot</br> 
+&#8594; Spring Cloud Config Server</br>
+&#8594; Spring Eureka Netflix Server</br>
+&#8594; Spring Data - JPA</br>
+&#8594; *with* PostgreSQL
 
 ## Current version
 ![](https://img.shields.io/badge/fuxpin%20legacy%20ventas%20rol%20microservice-0.0.1-blue)
 
 
-# Define Enviorment
+# Define Environment
 
-VM Options -> -Dspring.profiles.active=production
+VM Options &#8594; *-Dspring.profiles.active=production|localhost*
 
-## Enviorment variables
+## Environment variables
 
-In Spring Boot task -> ***VM options*** define:
+In Spring Boot task &#8594;  ***VM options*** define:
 
 ````
 -Drest.user=user                 -> Spring Cloud Config Server - user
 -Drest.password=password         -> Spring Cloud Config Server - Password
 -Dpostgresql.user=user           -> Database Login
 -Dpostgresql.password=password   -> Database Password
+-Deureka.user=user               -> Spring Security user - Basic Authentication
+-Deureka.password=password       -> Spring Security password - Basic Authentication
 ````
 
 To enable the *production* profile. In this cas, the server run reading production properties. In ***VM options*** define:
@@ -40,7 +46,7 @@ To enable the *production* profile. In this cas, the server run reading producti
 -Dspring.profiles.active=production
 ````
 
-## Examples *Serverless* execution
+## *Serverless* execution
 
 * default (localhost):
 
@@ -60,13 +66,13 @@ ${PROJECT_DIRECTORY}/build/libs/
 
 ## Production launcher
 
-Windows: Windows + R -> CMD
+Windows: Windows + R &#8594; CMD
 ````
 C:\Users\amgri\.jdks\jdk-11.0.7\bin\java -Xms128m -Xmx256m -jar -Dspring.profiles.active=production -Drest.user=user -Drest.password=password -Dpostgresql.user=user -Dpostgresql.password=password -Deureka.user=user -Deureka.password=password .\fuxpin-legacy-ventas-rol-microservice-0.0.1.jar
 ````
 
 ## Create a Run Java Jar Application with Systemd
-* For this configuration *pi* user is used to run the serveless installation. Before proced, create a directory:
+* For this configuration *pi* user is used to run the *serveless* installation. Before proced, create a directory:
 ````
 /opt/java-jar 
 ````
@@ -134,13 +140,13 @@ May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,539 INFO  unir.tfg.f
 May 27 17:45:59 raspberrypi java[4022]: 2021-05-27 17:45:59,834 INFO  com.netflix.discovery.DiscoveryClient : DiscoveryClient_FUXPIN-ROLE-MICROSERVICE/pi.intranet.cat:fuxpin-role-microservice:0 - registration status: 204
 ````
 
-* To stop the application:
+* To stop the service-application:
 
 ````
 sudo systemctl stop fuxpixlegacyventasrolmicroservice
 ````
 
-* To restart the application:
+* To restart the service-application:
 
 ````
 sudo systemctl restart fuxpixlegacyventasrolmicroservice
