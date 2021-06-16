@@ -91,8 +91,8 @@ class ServiceInstanceRestController implements RolesController {
 	@Override
 	public ResponseEntity<?> imAlive() {
 
-		try
-		{
+		try {
+			
 			Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
 
 			return ResponseEntity.ok(alive);
@@ -101,7 +101,7 @@ class ServiceInstanceRestController implements RolesController {
 			log.error ("Problems with microservice health!", e);
 		}
 
-		return new ResponseEntity<>(new Alive("NOK", "NOK"), HttpStatus.SERVICE_UNAVAILABLE);
+		return ResponseEntity.ok(new Alive("NOK", "NOK"));
 
 	}
 
