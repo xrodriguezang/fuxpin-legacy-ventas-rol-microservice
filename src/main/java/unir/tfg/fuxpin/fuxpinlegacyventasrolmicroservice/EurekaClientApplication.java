@@ -49,24 +49,33 @@ class ServiceInstanceRestController implements RolesController {
 	/**
 	 * Gets and rewrites the legacy role and parse it in the new object.
 	 *
-	 * @param id username
+	 * @param userName username
 	 *
 	 * @return the legacy role
 	 */
 	@Override
-	public ResponseEntity<?> getRoles(String id) {
+	public ResponseEntity<?> getRoles(String userName) {
 
 		List<Role> roles = new ArrayList<>();
 
-		log.info("Get roles by user: {}", id);
+		try {
 
-		RegisteredUser user = userService.getUserByUsername(id);
+			RegisteredUser user = userService.getUserByUsername(userName);
 
-		log.info("Legacy user: Returner: {}", user.toString());
+			if ( user==null ) {
+				log.info("No roles for user: {}, return empty array", userName);
 
-		for (LegacyRole legacyRole: user.getRoles()) {
-			// Transform the legacy role to the new object role
-			roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
+				return ResponseEntity.ok(roles);
+			}
+
+
+			for (LegacyRole legacyRole: user.getRoles()) {
+				// Transform the legacy role to the new object role
+				roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
+			}
+
+		} catch (Exception e) {
+			log.error("Problems with getRoles for user: {}", userName, e);
 		}
 
 		return ResponseEntity.ok(roles);

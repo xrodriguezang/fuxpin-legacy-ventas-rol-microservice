@@ -16,8 +16,6 @@ public interface IUserService {
 
     List<RegisteredUser> findAll();
 
-    RegisteredUser getUser(String userId);
-
     RegisteredUser getUserByUsername(String userId);
 
 }

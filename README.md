@@ -158,9 +158,22 @@ sudo systemctl enable fuxpixlegacyventasrolmicroservice
 ````
 Result:
 
+
+
 ````
 Created symlink /etc/systemd/system/multi-user.target.wants/fuxpixlegacyventasrolmicroservice.service → /etc/systemd/system/fuxpixlegacyventasrolmicroservice.service.
 ````
+
+# Replication service
+
+Eureka server shows the same service replicated two times: 
+
+<img src="https://raw.githubusercontent.com/xrodriguezang/fuxpin-legacy-ventas-rol-microservice/main/src/main/resources/static/MicroservicesInAction.png" alt="drawing" width="500"/>
+
+It server send the request to the same microservice in two machines:
+
+<img src="https://raw.githubusercontent.com/xrodriguezang/fuxpin-legacy-ventas-rol-microservice/482de232f6915f0249078349ff7d0a499e322e0b/src/main/resources/static/MicroservicesLog-Balancer.png" alt="drawing" width="500"/>
+
 
 # More info:
 
