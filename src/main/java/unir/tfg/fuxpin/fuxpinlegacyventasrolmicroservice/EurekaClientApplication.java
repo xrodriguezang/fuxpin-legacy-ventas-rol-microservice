@@ -71,6 +71,8 @@ class ServiceInstanceRestController implements RolesController {
 				return ResponseEntity.ok(roles);
 			}
 
+			log.info("Legacy user: Returner: {}", user.toString());
+
 			for (LegacyRole legacyRole: user.getRoles()) {
 				// Transform the legacy role to the new object role
 				roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
