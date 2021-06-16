@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.LegacyRole;
@@ -49,25 +50,26 @@ class ServiceInstanceRestController implements RolesController {
 	/**
 	 * Gets and rewrites the legacy role and parse it in the new object.
 	 *
-	 * @param userName username
+	 * Be careful! No alter any field of the method. It can cause problems with interface mapping
+	 *
+	 * @param id username
 	 *
 	 * @return the legacy role
 	 */
 	@Override
-	public ResponseEntity<?> getRoles(String userName) {
+	public ResponseEntity<?> getRoles(String id) {
 
 		List<Role> roles = new ArrayList<>();
 
 		try {
 
-			RegisteredUser user = userService.getUserByUsername(userName);
+			RegisteredUser user = userService.getUserByUsername(id);
 
 			if ( user==null ) {
-				log.info("No roles for user: {}, return empty array", userName);
+				log.info("No roles for user: {}, return empty array", id);
 
 				return ResponseEntity.ok(roles);
 			}
-
 
 			for (LegacyRole legacyRole: user.getRoles()) {
 				// Transform the legacy role to the new object role
@@ -75,7 +77,7 @@ class ServiceInstanceRestController implements RolesController {
 			}
 
 		} catch (Exception e) {
-			log.error("Problems with getRoles for user: {}", userName, e);
+			log.error("Problems with getRoles for user: {}", id, e);
 		}
 
 		return ResponseEntity.ok(roles);
@@ -89,9 +91,18 @@ class ServiceInstanceRestController implements RolesController {
 	@Override
 	public ResponseEntity<?> imAlive() {
 
-		Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
+		try
+		{
+			Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
 
-		return ResponseEntity.ok(alive);
+			return ResponseEntity.ok(alive);
+
+		} catch (Exception e) {
+			log.error ("Problems with microservice health!", e);
+		}
+
+		return new ResponseEntity<>(new Alive("NOK", "NOK"), HttpStatus.SERVICE_UNAVAILABLE);
+
 	}
 
 }
