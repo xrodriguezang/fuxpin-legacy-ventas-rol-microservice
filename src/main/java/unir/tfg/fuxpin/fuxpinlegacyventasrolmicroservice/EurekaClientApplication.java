@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.model.database.LegacyRole;
@@ -49,6 +50,8 @@ class ServiceInstanceRestController implements RolesController {
 	/**
 	 * Gets and rewrites the legacy role and parse it in the new object.
 	 *
+	 * Be careful! No alter any field of the method. It can cause problems with interface mapping
+	 *
 	 * @param id username
 	 *
 	 * @return the legacy role
@@ -58,15 +61,25 @@ class ServiceInstanceRestController implements RolesController {
 
 		List<Role> roles = new ArrayList<>();
 
-		log.info("Get roles by user: {}", id);
+		try {
 
-		RegisteredUser user = userService.getUserByUsername(id);
+			RegisteredUser user = userService.getUserByUsername(id);
 
-		log.info("Legacy user: Returner: {}", user.toString());
+			if ( user==null ) {
+				log.info("No roles for user: {}, return empty array", id);
 
-		for (LegacyRole legacyRole: user.getRoles()) {
-			// Transform the legacy role to the new object role
-			roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
+				return ResponseEntity.ok(roles);
+			}
+
+			log.info("Legacy user: Returner: {}", user.toString());
+
+			for (LegacyRole legacyRole: user.getRoles()) {
+				// Transform the legacy role to the new object role
+				roles.add(new Role(legacyRole.getCode(), legacyRole.getDescription()));
+			}
+
+		} catch (Exception e) {
+			log.error("Problems with getRoles for user: {}", id, e);
 		}
 
 		return ResponseEntity.ok(roles);
@@ -80,9 +93,18 @@ class ServiceInstanceRestController implements RolesController {
 	@Override
 	public ResponseEntity<?> imAlive() {
 
-		Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
+		try {
+			
+			Alive alive = new Alive(testService.findAll() > 0 ? "OK" : "Problems with database", "OK");
 
-		return ResponseEntity.ok(alive);
+			return ResponseEntity.ok(alive);
+
+		} catch (Exception e) {
+			log.error ("Problems with microservice health!", e);
+		}
+
+		return ResponseEntity.ok(new Alive("NOK", "NOK"));
+
 	}
 
 }

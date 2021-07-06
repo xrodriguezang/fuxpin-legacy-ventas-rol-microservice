@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 /**
  * Microservice Interface
  *
- * It's a contract interface with de clients. Every client must implement it.
+ * It's a contract interface with de clients. It's the pipeline with the productor - consumers
  *
  * @author Xavier Rodríguez
  *
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface RolesController {
 
     /**
-     * Method that informs about the microservice
+     * Method that send information about the microservice
      *
      * @return
      */
@@ -24,7 +24,7 @@ public interface RolesController {
     ResponseEntity<?> imAlive();
 
     /**
-     * Return the legacy roles to the client
+     * Return the legacy roles
      *
      * @param id username
      *

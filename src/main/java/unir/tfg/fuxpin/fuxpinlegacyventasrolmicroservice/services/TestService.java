@@ -9,6 +9,14 @@ import unir.tfg.fuxpin.fuxpinlegacyventasrolmicroservice.repository.TestReposito
 
 import java.util.List;
 
+/**
+ *
+ * Test Service Interface
+ *
+ * Used to monitor the application state
+ *
+ * @author Xavier Rodríguez
+ */
 @Service
 public class TestService implements ITestService {
 

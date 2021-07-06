@@ -30,16 +30,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public RegisteredUser getUser(String userId) {
-        Optional<RegisteredUser> user = userRepository.findById(Long.getLong("1"));
-
-        return user.get();
-    }
-
-    @Override
     public RegisteredUser getUserByUsername(String userId) {
-        List<RegisteredUser> sss = (List<RegisteredUser>) userRepository.findAll();
-
 
         RegisteredUser user = userRepository.readRegisteredUserByUserName(userId);
 

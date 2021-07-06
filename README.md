@@ -6,7 +6,8 @@ Configuration is provided by ``Spring Cloud Config Server``
 
 Main interface communication: ``RolesController``.
 
-It microservice provides the role of legacy application. It implements the Black box Modernization with a microservices layer. The communication with the services layer is via REST.
+It microservice provides the role of legacy application. It implements the Black Box Modernization with a microservices layer. 
+The communication with the service layer is via REST.
 
 Client-side *Service Discovery* allows services to find and communicate with each other without hard-coding hostname and port.
 
