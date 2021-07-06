@@ -6,7 +6,8 @@ Configuration is provided by ``Spring Cloud Config Server``
 
 Main interface communication: ``RolesController``.
 
-It microservice provides the role of legacy application. It implements the Black box Modernization with a microservices layer. The communication with the services layer is via REST.
+It microservice provides the role of legacy application. It implements the Black Box Modernization with a microservices layer. 
+The communication with the service layer is via REST.
 
 Client-side *Service Discovery* allows services to find and communicate with each other without hard-coding hostname and port.
 
@@ -158,22 +159,9 @@ sudo systemctl enable fuxpixlegacyventasrolmicroservice
 ````
 Result:
 
-
-
 ````
 Created symlink /etc/systemd/system/multi-user.target.wants/fuxpixlegacyventasrolmicroservice.service → /etc/systemd/system/fuxpixlegacyventasrolmicroservice.service.
 ````
-
-# Replication service
-
-Eureka server shows the same service replicated two times: 
-
-<img src="https://raw.githubusercontent.com/xrodriguezang/fuxpin-legacy-ventas-rol-microservice/main/src/main/resources/static/MicroservicesInAction.png" alt="drawing" width="500"/>
-
-It server send the request to the same microservice in two machines:
-
-<img src="https://raw.githubusercontent.com/xrodriguezang/fuxpin-legacy-ventas-rol-microservice/482de232f6915f0249078349ff7d0a499e322e0b/src/main/resources/static/MicroservicesLog-Balancer.png" alt="drawing" width="500"/>
-
 
 # More info:
 
